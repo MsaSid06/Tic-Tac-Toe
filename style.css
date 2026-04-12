@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: black;
+  color: aliceblue;
+}
+
+.parent {
+  display: none;
+}
+.active {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  align-items: center;
+  padding-top: 50px;
+}
+.ligne {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.content {
+  border: 1px solid rgb(61, 55, 55);
+  height: 20vh;
+  width: 15vw;
+  opacity: 1;
+}
+
+img {
+  width: 15vw;
+  height: 20vh;
+}
+.div-button {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.button {
+  height: 50px;
+  width: 250px;
+  border: none;
+  justify-items: center;
+}
+
+.red,
+.blue,
+.Continuer,
+.restart {
+  text-align: center;
+  font-size: medium;
+  font-weight: 900;
+  font-style: oblique;
+}
+.red {
+  background-color: red;
+  /* opacity: 10; */
+  opacity: 0.3;
+}
+.blue {
+  background-color: blue;
+  opacity: 1;
+}
+
+.gagner {
+  /* transform: scale(1.2); */
+  transition: 90ms ease-in;
+  opacity: 1;
+  z-index: 100;
+}
+
+/* '''' */
+
+.alerte,
+.BadAlerte,
+.Neutre {
+  height: 100px;
+  width: 400px;
+  background-color: rgb(54, 65, 214);
+  margin-left: 500px;
+  align-content: center;
+  margin-top: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 15px;
+  position: absolute;
+  top: -200px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 900;
+  font-style: oblique;
+  z-index: 1;
+}
+
+.messageBon {
+  background-color: rgb(54, 65, 214);
+}
+.messageMauvais {
+  background-color: rgba(243, 28, 9, 1);
+}
+
+.messageNeutre {
+  color: black;
+  background-color: #fff;
+}
+.BadAlerte {
+  background-color: rgba(243, 28, 9, 1);
+}
+
+.Neutre {
+  background-color: #fff;
+  color: black;
+}
+
+.apparition {
+  animation: glisse 5s 1ms 1;
+  transition: 5s ease-in-out;
+}
+
+@keyframes glisse {
+  0%,
+  100% {
+    position: absolute;
+
+    top: -200px;
+  }
+  50% {
+    position: absolute;
+
+    top: 0px;
+  }
+  75%,
+  85% {
+    position: absolute;
+
+    top: -20px;
+  }
+}
+
+h1,
+.a {
+  text-align: center;
+}
+
+.a {
+  height: 50px;
+  width: 250px;
+  background-color: rgb(236, 237, 242);
+  color: black;
+  align-content: center;
+  margin-top: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 900;
+  font-style: oblique;
+  z-index: 1000000000000000000000;
+}
+
+.Continuer {
+  display: none;
+}
+.Continuer-apparition {
+  transition: 1s ease-in-out;
+  display: block;
+  background-color: rgb(24, 101, 24);
+}
+
+.restart {
+  background-color: #fff;
+  color: black;
+}
