@@ -44,7 +44,7 @@ export function SlideMessage(notification, statut) {
 
 let quiAgagnerLaManchePrecedente = "Bleue";
 
-let nombreClick = 1,
+let nombreClick = 0,
   Click = 0,
   caseRouge = "",
   caseBleue = "",
@@ -59,9 +59,8 @@ resetOpacity("Bleue");
 content.forEach((element) => {
   element.addEventListener("click", () => {
     if (!DivClicker(element)) {
-      Bgcolor = gestionAlternanceCouleureContainer(
-        quiAgagnerLaManchePrecedente,
-      );
+      Bgcolor = gestionAlternanceCouleureContainer(nombreClick++);
+      // quiAgagnerLaManchePrecedente,
       element.style.background = Bgcolor;
       element.style.pointerEvents = "none"; //empecher un click futur sur ce meme carrer
       gestionAlternanceCouleureButton(++Click);
@@ -77,19 +76,11 @@ content.forEach((element) => {
  * @param {*} dernier represente le dernier gagnant, par defaut c'est "red"
  * @returns
  */
-function gestionAlternanceCouleureContainer(dernier) {
-  if (dernier == "Rouge") {
-    if (nombreClick++ % 2 == 0) {
-      return "blue";
-    } else {
-      return "red";
-    }
+function gestionAlternanceCouleureContainer(i) {
+  if (i % 2 == 0) {
+    return "blue";
   } else {
-    if (nombreClick++ % 2 == 0) {
-      return "red";
-    } else {
-      return "blue";
-    }
+    return "red";
   }
 }
 
@@ -105,13 +96,13 @@ function resetOpacity(gagnantPrecedent) {
     buttonBlue.style.opacity = 0.3;
     Click = 1;
     nombreClick = 1;
-    quiAgagnerLaManchePrecedente = "Bleue";
+    // quiAgagnerLaManchePrecedente = "Rouge";
   } else if (gagnantPrecedent == "Bleue" || gagnantPrecedent == "") {
     buttonRed.style.opacity = 0.3;
     buttonBlue.style.opacity = 1;
     Click = 0;
-    quiAgagnerLaManchePrecedente = "Bleue";
-    nombreClick = 1;
+    // quiAgagnerLaManchePrecedente = "Bleue";
+    nombreClick = 0;
   }
 
   ((caseRouge = ""),
@@ -123,6 +114,8 @@ function resetOpacity(gagnantPrecedent) {
     (Bgcolor = ""));
 }
 
+/**gestion de la verification de victoire, null...
+ */
 function VerifierSilYaDejaDesGagner() {
   for (let i = 0; i < 9; i++) {
     if (content[i].style.opacity != 1) {
@@ -136,7 +129,7 @@ setInterval(() => {
   if (!VerifierSilYaDejaDesGagner() && a >= 3) {
     VerificationParInterval();
   }
-}, 1100);
+}, 1000);
 
 function VerificationParInterval() {
   retourRed = a > 3 ? Gagner(caseRouge, 0) : "";
@@ -182,7 +175,7 @@ function gestionAlternanceCouleureButton(i) {
     buttonBlue.style.opacity = 0.3;
   }
 }
-
+//------------------------------------------//
 /**
  * permet de collection les indices des cases clicke dans des tableau dedier a chaque couleure
  */
@@ -267,9 +260,10 @@ function Gagner(table, a) {
  *
  * @param {String} chaine chaine issu des tableau red ou  bleu.
  * @param {Integer} statut 0
+ * fonctionn permettant de mettre en avant les case qui sont aligne et faire appl au slide pour le message
  */
 function caseGagnantes(chaine, statut) {
-  if (chaine == "0" && statut == 0) {
+  if (chaine == "0" && statut == 0 && a == 9) {
     SlideMessage("Match Null !! Veuillez recommencer", 2);
     resetOpacity();
   } else {
@@ -287,6 +281,7 @@ function caseGagnantes(chaine, statut) {
     }
     divParent.style.pointerEvents = "none";
   }
+  console.log(a);
 }
 
 continuer.addEventListener("click", () => {
