@@ -38,6 +38,11 @@ export function SlideMessage(notification, statut) {
     }, 7000);
   }
 }
+
+
+
+
+
 /**------------------------------------------------------------------------------ */
 
 // red impair , blue pair
@@ -292,7 +297,7 @@ continuer.addEventListener("click", () => {
     recommencer.classList.remove("Continuer");
   });
   resetOpacity(Winner);
-  Winner == "Rouge" ? (a = 1) : (a = 2);
+  // Winner == "Rouge" ? (a = 1) : (a = 2);
 });
 
 function restart() {
